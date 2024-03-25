@@ -22,7 +22,7 @@ export async function getUserFavorites(type, time_range, limit = 20, token) {
             limit: limit,
         },
     });
-
+    console.log(response.data.item);
     return response.data.items;
 }
 
@@ -36,6 +36,9 @@ export async function getRecentTracks(token) {
             limit: 50,
         },
     });
-    console.log(response.data.items);
-    return response.data.items;
+    // console.log(response.data.items);
+    // console.log(response.data.items.map((track) => track.track));
+    const filtered = response.data.items.map((track) => track.track);
+    console.log(filtered);
+    return filtered;
 }

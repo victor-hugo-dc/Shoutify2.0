@@ -11,7 +11,7 @@ const HeaderNav = () => {
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="fixed" sx={{ background: 'white', borderBottom: 1, borderColor: 'rgba(0, 0, 0, 0.12)', minHeight: '64px', boxShadow: 'none' }}>
                 <Toolbar sx={{ height: '64px' }}>
-                   <Box sx={{ flexGrow: 1, flexShrink: 0 }} />
+                    <Box sx={{ flexGrow: 1, flexShrink: 0 }} />
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
                         <IconButton onClick={() => navigate('/spotify')} size="large" color="black">
                             <Badge color="error">

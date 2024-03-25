@@ -6,7 +6,7 @@ import { Outlet } from "react-router-dom";
 const DashboardLayout = () => {
     return (
         <>
-            <Stack direction="column" sx={{ height: "100%" }}>
+            <Stack direction="column" sx={{ height: "100%" }} spacing={10}>
                 <HeaderNav/>
                 <Outlet/>
             </Stack>

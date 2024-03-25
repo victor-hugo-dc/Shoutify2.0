@@ -23,8 +23,9 @@ export default function Router() {
             path: "/",
             element: <DashboardLayout/>,
             children: [
-                { element: <Navigate to={"/"} replace />, index: true },
+                { element: <Navigate to={"/spotify"} replace />, index: true },
                 { path: "spotify", element: <HomePage /> },
+                { path: "journal", element: <></> },
             ],
         },
     ]);
