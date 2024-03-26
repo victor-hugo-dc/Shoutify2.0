@@ -25,7 +25,7 @@ export default function Router() {
             children: [
                 { element: <Navigate to={"/spotify"} replace />, index: true },
                 { path: "spotify", element: <HomePage /> },
-                { path: "journal", element: <></> },
+                { path: "journal", element: <JournalPage /> },
             ],
         },
     ]);
@@ -33,3 +33,4 @@ export default function Router() {
 
 const HomePage = Loadable(lazy(() => import("../pages/Main")));
 const LoginPage = Loadable(lazy(() => import("../pages/Login")));
+const JournalPage = Loadable(lazy(() => import("../pages/Journal")));

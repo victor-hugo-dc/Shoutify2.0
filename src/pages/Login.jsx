@@ -3,7 +3,7 @@ import React from 'react'
 import { useAuth } from '../context/AuthContext';
 
 const Login = () => {
-    const { isLoggedIn, handleLogin } = useAuth();
+    const { handleLogin } = useAuth();
 
     return (
         <Button
