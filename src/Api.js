@@ -38,6 +38,16 @@ export async function getRecentTracks(token) {
     return filtered;
 }
 
+export async function getTrack(token, id) {
+    const endpoint = `https://api.spotify.com/v1/tracks/${id}`;
+    const response = await axios.get(endpoint, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    });
+    return response.data;
+}
+
 export async function getJournalEntries() {
     const endpoint = "http://localhost:4000/entries";
     const response = await axios.get(endpoint);
