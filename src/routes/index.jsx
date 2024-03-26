@@ -26,6 +26,7 @@ export default function Router() {
                 { element: <Navigate to={"/spotify"} replace />, index: true },
                 { path: "spotify", element: <HomePage /> },
                 { path: "journal", element: <JournalPage /> },
+                { path: "post/:id", element: <PostEntryPage />},
             ],
         },
     ]);
@@ -34,3 +35,4 @@ export default function Router() {
 const HomePage = Loadable(lazy(() => import("../pages/Main")));
 const LoginPage = Loadable(lazy(() => import("../pages/Login")));
 const JournalPage = Loadable(lazy(() => import("../pages/Journal")));
+const PostEntryPage = Loadable(lazy(() => import("../pages/AddEntry")));

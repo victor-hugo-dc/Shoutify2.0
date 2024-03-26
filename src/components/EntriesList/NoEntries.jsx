@@ -1,6 +1,6 @@
 import { Box, Paper, Typography } from '@mui/material';
-import React, { useEffect, useState } from 'react';
-import { getUserId } from '../../Api';
+import React from 'react';
+import { LineWave } from 'react-loader-spinner';
 
 const paperStyle = {
     padding: '20px',
@@ -15,28 +15,14 @@ const textStyle = {
 };
 
 const NoEntries = (props) => {
-    console.log(props);
-    const [user, setUser] = useState({});
-    useEffect(() => {
-        const getUser = async () => {
-            try {
-                const _user = await getUserId(props.token);
-                setUser(_user);
-                console.log(_user);
-            } catch (error) {
-               console.error(error); 
-            }
-        };
-        getUser();
-    }, []);
-
     return (
-        <Paper style={paperStyle}>
-            <Typography style={textStyle}>
-                No Entries Found
-                {user && user.id}
-            </Typography>
-        </Paper>
+        <>
+            <Paper style={paperStyle} sx={{ width: "60vw" }}>
+                <Typography style={textStyle}>
+                    No Entries Found
+                </Typography>
+            </Paper>
+        </>
     );
 }
 
