@@ -6,11 +6,14 @@ import EntryList from '../components/EntriesList/EntryList';
 import { useAuth } from '../context/AuthContext';
 import { Navigate } from 'react-router-dom';
 import Profile from '../components/Profile';
+import { LineWave } from 'react-loader-spinner';
 
 const Journal = () => {
     const [entries, setEntries] = useState([]);
     const [user, setUser] = useState(null);
     const { token } = useAuth();
+    const [loading, setLoading] = useState(true);
+
     useEffect(() => {
         const getInfo = async () => {
             try {
@@ -18,8 +21,9 @@ const Journal = () => {
                 setEntries(_entries);
 
                 const _user = await getUserId(token);
-                console.log(_user);
                 setUser(_user);
+
+                setLoading(false);
 
             } catch (error) {
                 console.error(error);
@@ -36,6 +40,17 @@ const Journal = () => {
     }
 
     return (
+        <>
+        { loading ? (
+            <LineWave 
+                visible={true}
+                height="100"
+                width="100"
+                color="#4fa94d"
+                ariaLabel="line-wave-loading"
+                wrapperStyle={{}}
+            />
+        ) : (
         <Container>
             <Stack direction="row" spacing={2}>
             { user && <Profile user={user}/> }
@@ -46,6 +61,8 @@ const Journal = () => {
             )}
             </Stack>
         </Container>
+        )}
+        </>
     )
 }
 
