@@ -48,8 +48,8 @@ export async function getTrack(token, id) {
     return response.data;
 }
 
-export async function getJournalEntries() {
-    const endpoint = "http://localhost:4000/entries";
+export async function getJournalEntries(id) {
+    const endpoint = `http://localhost:4000/entries?id=${id}`;
     const response = await axios.get(endpoint);
     return response.data;
 }

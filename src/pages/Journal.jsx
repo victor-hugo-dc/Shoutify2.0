@@ -17,11 +17,11 @@ const Journal = () => {
     useEffect(() => {
         const getInfo = async () => {
             try {
-                const _entries = await getJournalEntries();
-                setEntries(_entries);
-
                 const _user = await getUserId(token);
                 setUser(_user);
+
+                const _entries = await getJournalEntries(_user.id);
+                setEntries(_entries);
 
                 setLoading(false);
 

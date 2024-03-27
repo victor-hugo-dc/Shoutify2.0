@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import FormProvider, { RHFDatePicker, RHFTextField } from '../../components/hook-form';
 import { Alert, Button, Card, CardContent, CardMedia, Stack, Typography } from '@mui/material';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getTrack } from '../../Api';
+import { getTrack, getUserId } from '../../Api';
 import { useAuth } from '../../context/AuthContext.jsx';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import dayjs, { Dayjs } from "dayjs";
@@ -17,6 +17,7 @@ const JournalForm = () => {
     const [track, setTrack] = useState(null);
     const { token } = useAuth();
     const navigate = useNavigate();
+    const [user, setUser] = useState(null);
 
     const JournalSchema = Yup.object().shape({
         title: Yup.string()
@@ -35,7 +36,9 @@ const JournalForm = () => {
     const { reset, setError, handleSubmit, formState: { errors } } = methods;
     const onSubmit = async (data) => {
         try {
-            data.song = track;
+            data.track = track;
+            console.log(user);
+            data.id = user;
             const response = await axios.post("http://localhost:4000/entries", data);
             navigate('/journal');
 
@@ -53,6 +56,10 @@ const JournalForm = () => {
         const getInfo = async () => {
             const _track = await getTrack(token, id);
             setTrack(_track);
+
+            const _user = await getUserId(token);
+            setUser(_user.id);
+            console.log(_user);
         }
         getInfo();
     }, []);
