@@ -6,7 +6,12 @@ import { useNavigate } from 'react-router-dom';
 const Track = ({ track }) => {
     const navigate = useNavigate();
     return (
-        <Card style={{ width: '100%', display: 'flex', alignItems: 'center', padding: '16px', marginBottom: '16px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', backgroundColor: '#fff', transition: 'transform 0.2s ease', '&:hover': { transform: 'scale(1.02)', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)' } }}>
+        <Card sx={{
+            transition: 'transform 0.3s ease-in-out',
+                '&:hover': {
+                    transform: 'translateY(-5px)', // Adjust this value as needed
+                },
+        }} style={{ width: '100%', display: 'flex', alignItems: 'center', padding: '16px', marginBottom: '16px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', backgroundColor: '#fff', transition: 'transform 0.2s ease', '&:hover': { transform: 'scale(1.02)', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)' } }}>
         <CardMedia style={{ width: '100px', height: '100px', marginRight: '16px' }} image={track.album.images[0].url} title={track.name} />
             <CardContent style={{ flex: 1 }}>
                 <Typography variant="h6" component="h3">{track.name}</Typography>

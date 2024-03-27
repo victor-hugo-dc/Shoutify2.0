@@ -32,14 +32,13 @@ const JournalForm = () => {
         resolver: yupResolver(JournalSchema),
     });
 
-    const { reset, setError, handleSubmit, formState: { errors }, watch } = methods;
+    const { reset, setError, handleSubmit, formState: { errors } } = methods;
     const onSubmit = async (data) => {
         try {
             data.song = track;
-            console.log(data);
             const response = await axios.post("http://localhost:4000/entries", data);
             navigate('/journal');
-            // here post the data to the db.json 
+
         } catch (error) {
             console.error(error);
             reset();
