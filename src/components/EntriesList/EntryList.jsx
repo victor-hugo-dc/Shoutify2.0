@@ -1,9 +1,13 @@
 import React from 'react';
+import Entry from './Entry';
+import { Stack } from '@mui/material';
 
-const EntryList = (entries) => {
+const EntryList = ({ entries }) => {
     console.log(entries);
     return (
-        <div>Hi</div>
+        <Stack direction="column">
+            { entries && entries.map((entry) => <Entry entry={entry}/>)}
+        </Stack>
     )
 }
 

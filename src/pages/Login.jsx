@@ -1,4 +1,4 @@
-import { Button } from '@mui/material'
+import { Button, Typography } from '@mui/material'
 import React from 'react'
 import { useAuth } from '../context/AuthContext';
 
@@ -21,7 +21,7 @@ const Login = () => {
         }}
         onClick={handleLogin}
         >
-            Login with Spotify
+            <Typography>Login with Spotify</Typography>
         </Button>
     );
 }

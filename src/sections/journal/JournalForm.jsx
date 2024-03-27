@@ -10,6 +10,7 @@ import { useAuth } from '../../context/AuthContext.jsx';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import dayjs, { Dayjs } from "dayjs";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import axios from 'axios';
 
 const JournalForm = () => {
     const { id } = useParams();
@@ -36,6 +37,7 @@ const JournalForm = () => {
         try {
             data.song = track;
             console.log(data);
+            const response = await axios.post("http://localhost:4000/entries", data);
             navigate('/journal');
             // here post the data to the db.json 
         } catch (error) {
