@@ -27,8 +27,8 @@ const Entry = ({ entry }) => {
 
     return (
         <Card style={cardStyle}>
-            <Stack direction="row">
-                <CardMedia style={{ width: '100px', height: '100px', marginRight: '16px' }} image={entry.track.album.images[0].url} title={entry.track.name} />
+            <Stack direction="row" spacing={5}>
+                <CardMedia style={{ width: '50%', marginRight: '16px' }} image={entry.track.album.images[0].url} title={entry.track.name} />
                 <CardContent>
                     <Typography variant="h5" component="h2" style={textStyle}>
                         on <b>{entry.track.name}</b> by {entry.track.album.artists[0].name}: {entry.title}

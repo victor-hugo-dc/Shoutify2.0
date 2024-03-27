@@ -38,7 +38,7 @@ const JournalForm = () => {
         try {
             data.track = track;
             console.log(user);
-            data.id = user;
+            data.user_id = user;
             const response = await axios.post("http://localhost:4000/entries", data);
             navigate('/journal');
 
