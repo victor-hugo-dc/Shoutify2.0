@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Box, IconButton, AppBar, Toolbar, Badge } from "@mui/material";
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
-import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from 'react-router-dom';
+import { EditNote } from '@mui/icons-material';
 
 const HeaderNav = () => {
     const navigate = useNavigate();
@@ -24,7 +24,7 @@ const HeaderNav = () => {
                             onClick={() => navigate('/journal')}
                         >
                             <Badge color="error">
-                                <AddIcon />
+                                <EditNote />
                             </Badge>
                         </IconButton>
                     </Box>
