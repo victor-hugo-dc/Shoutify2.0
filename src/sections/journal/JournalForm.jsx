@@ -11,7 +11,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import dayjs, { Dayjs } from "dayjs";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import axios from 'axios';
-import Submitted from '../../components/Submitted/index.jsx';
+import Entry from '../../components/EntriesList/Entry.jsx';
 
 const JournalForm = () => {
     const { id } = useParams();
@@ -19,7 +19,7 @@ const JournalForm = () => {
     const { token } = useAuth();
     const navigate = useNavigate();
     const [user, setUser] = useState(null);
-    const [submitted, setSubmitted] = useState(false);
+    const [entry, setEntry] = useState(null);
 
     const JournalSchema = Yup.object().shape({
         title: Yup.string()
@@ -41,7 +41,8 @@ const JournalForm = () => {
             data.track = track;
             data.user_id = user;
             const response = await axios.post("http://localhost:4000/entries", data);
-            setSubmitted(true);
+            console.log(response);
+            setEntry(response.data);
 
         } catch (error) {
             console.error(error);
@@ -66,7 +67,7 @@ const JournalForm = () => {
 
     return (
         <>
-            { !submitted ? (
+            { !entry ? (
                 <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
                     <Stack spacing={3} sx={{ my: 2, width: "60vw" }}>
                         {!!errors.afterSubmit && (
@@ -107,7 +108,7 @@ const JournalForm = () => {
                     </Button>
                 </FormProvider>) : (
                 
-                <Submitted/>
+                    <Entry entry={entry}/>
                 
                 )
             }
